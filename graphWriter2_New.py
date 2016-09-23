@@ -62,7 +62,6 @@ def graphWriterIRI():
 
 
 def graphWriterRut():
-    no_data = '      NA'
     # Set up the plots
     plt.subplot(2, 1, 1)
     plt.grid(True)
