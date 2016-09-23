@@ -23,7 +23,6 @@ def driveFind():
                         folders = folders+'\\\\'+dir_[m]
                         if dir_[m] == dir_[-1]:
                             return folders
-                            break
                         else:continue
                 else:break
             
