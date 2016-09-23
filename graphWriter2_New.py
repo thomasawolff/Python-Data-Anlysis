@@ -3,7 +3,6 @@ import csv
 import re
 import matplotlib.pyplot as plt
 from matplotlib import pylab
-from matplotlib import animation
 from matplotlib import style
 
 #style.use('dark_background')
@@ -30,7 +29,6 @@ def graphWriterIRI():
     # Iterate over the files in the current directory
     for filename in os.listdir(os.getcwd()):
         # Initialize a new set of lists for each file
-        totalList = []
         startList = []
         endList = []
         iriRList = []
@@ -64,7 +62,6 @@ def graphWriterIRI():
 
 
 def graphWriterRut():
-    n = 0
     no_data = '      NA'
     # Set up the plots
     plt.subplot(2, 1, 1)
