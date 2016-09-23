@@ -3,34 +3,33 @@ import re
 
 from graphWriter2_New import *
 
-def drivePrint():
+def driveFind():
     driveList = ['A:','B:','C:','D:','E:','F:','G:',\
                  'H:','I:','J:','K:','L:','M:','N:',\
                  'O:','P:','Q:','R:','S:','T:','U:',\
                  'V:','W:','X:','Y:','Z:']
-    dir_ = '\\\\Pavemgmt\\\\DATA_COLLECTION\\\\AUTOMATED_VANS\\\\02_COLLECTION_VEHICLES\\\\01_CALIBRATION'
-    while True:
-        for drives in driveList:
-            n = 0
-            dir_year = drives[n]+':'+dir_
-            if os.path.isdir(dir_year) == True:
-                return dir_year
-            else:
-                n = n + 1
-                if n == len(driveList):
-                    break
-        for drives in driveList:
-            n = 0
-            dir_year = drives[n]+':'+'\\\\PavementAnalysis'+dir_
-            if os.path.isdir(dir_year) == True:
-                return dir_year
-            else:
-                n = n + 1
-                if n == len(driveList):
-                    break
+    dir_ = ['PavementAnalysis','Pavemgmt','DATA_COLLECTION',\
+            'AUTOMATED_VANS','02_COLLECTION_VEHICLES','01_CALIBRATION']
+    for drives in driveList:
+        n = 0
+        letter = drives[n]+':/'
+        if os.path.isdir(letter) == True:
+            for strings in dir_:
+                folders = letter+'\\\\'+strings
+                if os.path.isdir(folders) == True:
+                    m = dir_.index(strings)
+                    while True:
+                        m = m + 1
+                        folders = folders+'\\\\'+dir_[m]
+                        if dir_[m] == dir_[-1]:
+                            return folders
+                            break
+                        else:continue
+                else:break
+            
 def yearPrint():
     try:
-        os.chdir(drivePrint())
+        os.chdir(driveFind())
         os.chdir('.')
         for line in os.listdir(os.getcwd()):
             if re.search('calibrationFiles_',line):
