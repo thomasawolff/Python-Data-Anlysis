@@ -1,6 +1,4 @@
 import os
-import re
-import sys
 
 driveList = ['H:','Q:','R:','T:','Z:']
 
