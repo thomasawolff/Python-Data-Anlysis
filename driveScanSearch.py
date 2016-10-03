@@ -16,9 +16,8 @@ def missingFileSearch():
             if os.path.isdir(setFolder)==True and \
                len(setFolder)==3 and setFolder != 'sec':
                 collSet.append(os.listdir(setFolder))
-                if (('prft')+'0002.'+setFolder)in collSet[n]:
-                    pass
-                elif (('PRFT')+'0002.'+setFolder)in collSet[n]:
+                if (('prft')+'0002.'+setFolder) or\
+                (('PRFT')+'0002.'+setFolder) in collSet[n]:
                     pass
                 else:
                     try:setList.append(int(setFolder))
