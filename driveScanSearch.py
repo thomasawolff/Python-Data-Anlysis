@@ -1,46 +1,44 @@
-
 import os
+import re
 import sys
 
-driveList = ['z:','q:','r:','w:']
+driveList = ['H:','Q:','R:','T:','Z:']
 
 def missingFileSearch():
-    n = 0
     d = 0
     collSet = []
     setList = []
-    while True:
+    while d < len(driveList):
         os.chdir(driveList[d])
-        print 'Drive being scanned:',driveList[d]
         for setFolder in os.listdir(os.getcwd()):
-            if os.path.isdir(setFolder)==True and \
-               len(setFolder)==3 and setFolder != 'sec':
-                collSet.append(os.listdir(setFolder))
-                if (('prft')+'0002.'+setFolder) or\
-                (('PRFT')+'0002.'+setFolder) in collSet[n]:
-                    pass
-                else:
-                    try:setList.append(int(setFolder))
-                    except ValueError:pass
-                n = n + 1
+            if os.path.isdir(setFolder)==True and\
+               (len(setFolder)==2 or\
+                len(setFolder)==3) and\
+                setFolder != 'sec':
+                try:collSet.append(int(setFolder))
+                except ValueError:pass
+                for line in os.listdir(setFolder):
+                    if ('prft000' in line or\
+                       'PRFT000' in line):
+                        try:setList.append(int(setFolder))
+                        except ValueError:pass
         if driveList[d] == driveList[-1]:
-            sys.exit(0)
-        else:
-            d = d + 1
-            continue
-    return setList
+            break
+        d = d + 1
+        continue
+    return list(set(collSet)-set(setList))
 
 def binarySearch():
-    n = 0
-    d = 0
     setFolder = []
-    while True:
-        os.chdir(driveList[d]) 
-        print''
-        print os.getcwd()
+    print missingFileSearch()
+    for drives in driveList:
+        os.chdir(drives)
+        print 'Drive being scanned:',drives
         for line in os.listdir(os.getcwd()):
-            if len(line)==3 and line != 'sec':
-                setFolder.append(int(line)) 
+            if (len(line)==2 or len(line)==3)\
+               and line != 'sec':
+               try:setFolder.append(int(line))
+               except ValueError:pass
         setFolder.sort()
         for value in missingFileSearch():
             [value].sort()
@@ -58,7 +56,6 @@ def binarySearch():
                         first = midpoint+1
             if found == True:
                 print value,found,drives
-        print setFolder
-        d = d + 1
-        continue
+            else:
+                break
 binarySearch()
