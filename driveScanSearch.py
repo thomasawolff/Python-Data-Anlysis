@@ -1,7 +1,9 @@
 import os
 import sys
 
-driveSet = ['A:','B:','C:','D:','E:','F:','G:','H:','I:','J:','K:','L:','M:','N:','O:','P:','Q:','R:','S:','T:','U:','V:','W:','X:','Y:','Z:']
+driveSet = ['A:','B:','C:','D:','E:','F:','G:','H:','I:','J:',\
+            'K:','L:','M:','N:','O:','P:','Q:','R:','S:','T:',\
+            'U:','V:','W:','X:','Y:','Z:']
 
 def driveFind():
     dirs = []
@@ -18,7 +20,8 @@ def setFinder():
         except WindowsError:pass
         print 'Drive being scanned:',driveList
         for setFolder in os.listdir(os.getcwd()):
-            if os.path.isdir(setFolder)==True and len(setFolder)==3 and setFolder.endswith('.sec')==False:
+            if os.path.isdir(setFolder)==True and\ 
+            len(setFolder)==3 and setFolder.endswith('.sec')==False:
                 try: type(int(setFolder[-3:]))
                 except ValueError:continue
                 yield driveList+'\\'+setFolder
