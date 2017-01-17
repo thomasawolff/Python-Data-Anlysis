@@ -5,7 +5,7 @@ import math
 import sys
 import random as r
 
-def readerIn():
+def readerIn(): # changes the directory to the desktop to begin program
     os.chdir('C:\\\\Users\\\\U2970\\\\Desktop')
     
     
@@ -26,6 +26,10 @@ class nCounter(object):
             corr = raw_input('Enter the corridor you want or type "done" to leave: ').upper()
             if corr == 'done'.upper():
                 sys.exit(0)
+            else:
+                for i in range(0,abs(len(corr)-6)):
+                    corr = '0' + corr
+                corr = 'C' + corr
             for col in csv.DictReader(open('NORTH_DATA_EXPORT_10_12_16.csv')):
                 corridorRB = str(col['CORRIDOR_CODE_RB'])
                 corridor = str(col['CORRIDOR_CODE'])
