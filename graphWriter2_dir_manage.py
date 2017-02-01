@@ -63,7 +63,7 @@ def directory():
                             if re.search('baseline',line): # searches for files with 'baseline' in file name
                                 info=raw_input('Baseline data is available: press Y or enter "done": ')
                                 print''
-                                if info.lower() == 'y':baseLineWriter() # function ca;; the baseline code
+                                if info.lower() == 'y':baseLineWriter() # function call the baseline code
                                 elif info.lower()=='done': break # if user enters "done" leave loop
                                 else:continue
                             else:pass
