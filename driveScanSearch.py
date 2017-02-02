@@ -5,7 +5,7 @@ import time
 
 '''This code scans through any number of system
 drives internal and external and searches for
-prft and PRFT files (or any other kind of file'''
+prft and PRFT files (or any other kind of file)'''
 
 driveSet = ['A:','B:','D:','E:','F:','G:',\
             'H:','I:','J:','K:','L:','M:',\
@@ -23,7 +23,7 @@ def setFinder():
         except WindowsError:pass # pass by the drive if error
         print 'Drive being scanned:',driveList
         for setFolder in os.listdir(os.getcwd()): # for folder in list of folders
-            if os.path.isdir(setFolder)==True and\ # if it is indeed a path on the drive
+            if os.path.isdir(setFolder)==True and\ 
                len(setFolder)==3 and\
                setFolder.endswith('.sec')==False: # if it ends with '.sec'
                 try: type(int(setFolder[-3:])) # if the folder name ends with 3 numbers
