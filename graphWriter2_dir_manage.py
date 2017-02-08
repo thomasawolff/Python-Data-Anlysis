@@ -5,9 +5,9 @@ import sys
 '''This program manages the entry of information from the user. It begins by changing the
 directory of the program to the sharedrive path shown below:
 'PavementAnalysis\Pavemgmt\DATA_COLLECTION\AUTOMATED_VANS\02_COLLECTION_VEHICLES\01_CALIBRATION'
-it then asks the user to enter the year for of data the want to see. From that point
-information is entered about the van number finally show the desired data visualization.
-This code is run from the graphing_final_consol.py program'''
+it then asks the user to enter the year of data the want to see. From that point
+information is entered about the van number. Once this data is entered the desired data visualization
+will be displayed through graphWriter2_New.py. This code is run from the graphing_final_consol.py program'''
 
 from graphWriter2_New import *
 from driveAlgorithm import *
