@@ -7,7 +7,8 @@ directory of the program to the sharedrive path shown below:
 'PavementAnalysis\Pavemgmt\DATA_COLLECTION\AUTOMATED_VANS\02_COLLECTION_VEHICLES\01_CALIBRATION'
 it then asks the user to enter the year of data the want to see. From that point
 information is entered about the van number. Once this data is entered the desired data visualization
-will be displayed through graphWriter2_New.py. This code is run from the graphing_final_consol.py program'''
+will be displayed through graphWriter2_New.py and baseLineWriter.py if the baseline data is available. 
+This code is run from the graphing_final_consol.py program'''
 
 from graphWriter2_New import *
 from driveAlgorithm import *
