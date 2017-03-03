@@ -5,8 +5,6 @@ import arcpy as ap
 import glob as g
 from math import radians, cos, sin, asin, sqrt, atan2
 
-os.chdir('C:\Users\U2970\Desktop')
-
 '''This code is intended to input a csv file and utilize the latitude
 and longitude. It calculates the distance between the latitude and
 longitude in miles and appends the resulting data along with the data from
