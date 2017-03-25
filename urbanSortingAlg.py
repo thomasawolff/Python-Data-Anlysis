@@ -19,8 +19,7 @@ all the other records in the csv file. The sorted file includes the streets
 in order of distance from the first record in the csv.'''
 
 def dataOutGlob():
-    for file in g.glob('*GREATFALLS_URBANS.csv'): # This was run on Missoula Montana data
-        for line in open(file):
+    for file in g.glob('*GREATFALLS_URBANS.csv'): # This was run on Missoula Montana data        for line in open(file):
             yield line
 
 def headerBody():
@@ -45,7 +44,7 @@ def headerBody():
                     *sin((xDistWGS/2))**2
         ySd = 2 * atan2(sqrt(xSd),sqrt(1 - xSd))
         dDist = 3958.756 * ySd # distance in miles between start and end nodes
-                if diffLatS > 0.0 and diffLongS > 0.0:
+        if diffLatS > 0.0 and diffLongS > 0.0:
             xS = sin(diffLatS/2)**2 + cos(float(data1[m][20]))*cos(float(data1[n][20]))\
                     *sin(diffLongS/2)**2
             yS = 2 * atan2(sqrt(xS),sqrt(1 - xS))
