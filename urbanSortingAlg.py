@@ -25,8 +25,7 @@ def dataOutGlob():
 
 def headerBody():
     m = 1
-    b = 0
-    data1 = []
+    b = 0    data1 = []
     dist = [] # initiating empty lists
     for line in dataOutGlob():
         data1.append(line.split(','))
@@ -36,8 +35,7 @@ def headerBody():
         # and ending lat and long of streets in csv file.
         # m = first row in csv
         # n = row n in csv
-        diffLatS = radians(abs(float(data1[m][20]) - float(data1[n][20]))) # lat diff for start node
-        diffLongS = radians(abs(float(data1[m][21]) - float(data1[n][21]))) # long diff for start node
+        diffLatS = radians(abs(float(data1[m][20]) - float(data1[n][20]))) # lat diff for start node        diffLongS = radians(abs(float(data1[m][21]) - float(data1[n][21]))) # long diff for start node
         diffLatE = radians(abs(float(data1[m][22]) - float(data1[n][22]))) # lat diff for end node
         diffLongE = radians(abs(float(data1[m][23]) - float(data1[n][23]))) # long diff for end node
         xDistWGS = radians((float(data1[n][20])-float(data1[n][22])))
@@ -47,8 +45,7 @@ def headerBody():
                     *sin((xDistWGS/2))**2
         ySd = 2 * atan2(sqrt(xSd),sqrt(1 - xSd))
         dDist = 3958.756 * ySd # distance in miles between start and end nodes
-        
-        if diffLatS > 0.0 and diffLongS > 0.0:
+                if diffLatS > 0.0 and diffLongS > 0.0:
             xS = sin(diffLatS/2)**2 + cos(float(data1[m][20]))*cos(float(data1[n][20]))\
                     *sin(diffLongS/2)**2
             yS = 2 * atan2(sqrt(xS),sqrt(1 - xS))
@@ -85,7 +82,6 @@ def headerBody():
                 or int(dist[w][5]) == int(dist[d][5]) and\
                 int(dist[d][5]) == int(dist[w][5])) and\
                 dist[w][2] != dist[d][2]:
-                pass
                 print dist[w][2],int(dist[w][5]),int(dist[w][6]),dist[w][11],\
                       dist[w][12],dist[w][13],dist[w][14],dist[w][15],'W'
                 print dist[d][2],int(dist[d][5]),int(dist[d][6]),dist[d][11],\
