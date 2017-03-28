@@ -19,7 +19,8 @@ all the other records in the csv file. The sorted file includes the streets
 in order of distance from the first record in the csv.'''
 
 def dataOutGlob():
-    for file in g.glob('*GREATFALLS_URBANS.csv'): # This was run on Missoula Montana data        for line in open(file):
+    for file in g.glob('*GREATFALLS_URBANS.csv'): # This was run on Missoula Montana data    
+        for line in open(file):
             yield line
 
 def headerBody():
@@ -34,7 +35,8 @@ def headerBody():
         # and ending lat and long of streets in csv file.
         # m = first row in csv
         # n = row n in csv
-        diffLatS = radians(abs(float(data1[m][20]) - float(data1[n][20]))) # lat diff for start node        diffLongS = radians(abs(float(data1[m][21]) - float(data1[n][21]))) # long diff for start node
+        diffLatS = radians(abs(float(data1[m][20]) - float(data1[n][20]))) # lat diff for start node       
+        diffLongS = radians(abs(float(data1[m][21]) - float(data1[n][21]))) # long diff for start node
         diffLatE = radians(abs(float(data1[m][22]) - float(data1[n][22]))) # lat diff for end node
         diffLongE = radians(abs(float(data1[m][23]) - float(data1[n][23]))) # long diff for end node
         xDistWGS = radians((float(data1[n][20])-float(data1[n][22])))
