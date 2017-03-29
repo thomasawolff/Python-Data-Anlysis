@@ -25,7 +25,8 @@ def dataOutGlob():
 
 def headerBody():
     m = 1
-    b = 0    data1 = []
+    b = 0    
+    data1 = []
     dist = [] # initiating empty lists
     for line in dataOutGlob():
         data1.append(line.split(','))
@@ -46,6 +47,7 @@ def headerBody():
                     *sin((xDistWGS/2))**2
         ySd = 2 * atan2(sqrt(xSd),sqrt(1 - xSd))
         dDist = 3958.756 * ySd # distance in miles between start and end nodes
+        
         if diffLatS > 0.0 and diffLongS > 0.0:
             xS = sin(diffLatS/2)**2 + cos(float(data1[m][20]))*cos(float(data1[n][20]))\
                     *sin(diffLongS/2)**2
