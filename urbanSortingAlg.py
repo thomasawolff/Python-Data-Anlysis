@@ -19,7 +19,7 @@ all the other records in the csv file. The sorted file includes the streets
 in order of distance from the first record in the csv.'''
 
 def dataOutGlob():
-    for file in g.glob('*GREATFALLS_URBANS.csv'): # This was run on Missoula Montana data    
+    for file in g.glob('*GREATFALLS_URBANS.csv'):   
         for line in open(file):
             yield line
 
