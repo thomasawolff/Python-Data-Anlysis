@@ -1,11 +1,5 @@
 import os
-import re
-import csv
-import sys
-import arcpy as ap
 import glob as g
-import pprint as p
-from itertools import groupby
 from math import radians, cos, sin, asin, sqrt, atan2
 
 os.chdir('C:\Users\U2970\Desktop\Desktop Excel Files')
@@ -25,7 +19,6 @@ def dataOutGlob():
 
 def headerBody():
     m = 1
-    b = 0
     data1 = []
     dist = [] # initiating empty lists
     for line in dataOutGlob():
