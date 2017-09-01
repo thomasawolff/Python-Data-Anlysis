@@ -4,15 +4,9 @@ import csv
 import math
 import sys
 import random as r
-from multiprocessing import Process
 
 def readerIn():
     os.chdir('/home/user/Desktop')
-    
-    
-def readerOut():
-    os.chdir('C:\Users\moose\Desktop')
-
 
 def nCounter():
     readerIn()
@@ -45,7 +39,7 @@ def nCounter():
                         else: continue
                     else: print corridor,round(begMiA,3),round(endMi,3),'...',\
                           round(r.uniform(begMiA,endMi),3)
-                    break
+                          break
                 else: pass
             else:
                 print corridor,round(begMi+10,3),round(endMi,3),'...',\
@@ -54,9 +48,6 @@ def nCounter():
              and r.uniform(begMi,endMi) < endMi and lane == 1:
             print corridor,round(begMi,3),round(endMi,3),'...',\
                   round(r.uniform(begMi,endMi),3),'--------'
-
-        else: pass
-
-    
+        else: pass 
 nCounter()
 
