@@ -15,7 +15,6 @@ def nCounter():
         corridor = str(col['CORRIDOR'])
         begMi = float(col['BEGIN_MI'])
         begMiA = float(col['BEGIN_MI'])
-        begMiB = float(col['BEGIN_MI'])
         endMi = float(col['END_MI'])
         lane = int(col['LANE'])
         dir_ = str(col['DIR'])
