@@ -49,7 +49,6 @@ def missingFileSearchPRFT(): # searches for prft files
 #missingFileSearchPRFT()
 
 def missingFileSearchBoxes(): # searches for area crack and boxes files
-    setList = []
     for line in setFinder():
         os.chdir(line)
         folder = os.listdir(line)
