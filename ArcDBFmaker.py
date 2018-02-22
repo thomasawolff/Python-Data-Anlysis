@@ -16,7 +16,6 @@ file is then brought into the Shapebuilder function and turned into a .dbf file 
 geodatabase for ArcMap 10.4. The geodatabase is then turned into a shapefile. ArcMap
 is started and a map is created with the title Coverage Map: and the date'''
 
-
 def headerBody():
     output = []
     os.chdir(path)
@@ -86,7 +85,6 @@ shapeBuilder()
 
 
 def arcStarter():
-    
     os.chdir('C:\\\\Program Files (x86)\\\\ArcGIS\\\\Desktop10.4\\\\bin')
     os.system('start ArcMap.exe') # Opens ArcMap Application
     mxd = arcpy.mapping.MapDocument(path+'\\\\'+"COLLECTION_MAPS.mxd")
