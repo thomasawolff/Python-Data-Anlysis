@@ -2,8 +2,6 @@ import os
 import re
 import csv
 
-
-directory = '\\\\hhs-hlnshare\\shared\\phs\\MTmechv Data\\NFP Exports'
 os.chdir(directory)
 print os.getcwd()
 
