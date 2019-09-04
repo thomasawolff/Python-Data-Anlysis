@@ -1,14 +1,17 @@
 import os
 import re
 import csv
+import itertools
 
+
+directory = '\\\\hhs-hlnshare\\shared\\phs\\MTmechv Data\\NFP Exports'
 os.chdir(directory)
 print os.getcwd()
 
 fileName = 'Home_Visit_Encounter.txt'
 
 column1 = 'CL_EN_GEN_ID'
-value1 = '622699'
+#value1 = '622699'
 
 column2 = 'SurveyDate'
 #value2 = '2016-05-19'
@@ -63,14 +66,34 @@ def dataParser():
                     if newDict[column1] == value1 and newDict[column2] == value2:
                         final.append(newDict.values())
                 except NameError:
-                    if newDict[column1] == value1:
+                    try:
+                        if newDict[column1] == value1:
+                            final.append(newDict.values())
+                    except NameError:
                         final.append(newDict.values())
+    k = final
+    k.sort()
+    final2 = list(k for k,_ in itertools.groupby(k))
 
-    with open('NFPdata.csv','wb') as data:
-        filename = csv.writer(data)
-        filename.writerow(headers[-1])
-        for lines in final:
-            filename.writerow(lines)
+    try:
+        with open('NFPdata_'+value1+'_'+value2+'.csv','wb') as data:
+            filename = csv.writer(data)
+            filename.writerow(headers[-1])
+            for lines in final2:
+                filename.writerow(lines)
+    except NameError:
+        try:
+            with open('NFPdata_'+value1+'.csv','wb') as data:
+                filename = csv.writer(data)
+                filename.writerow(headers[-1])
+                for lines in final2:
+                    filename.writerow(lines)
+        except NameError:
+            with open('NFPdata_All.csv','wb') as data:
+                filename = csv.writer(data)
+                filename.writerow(headers[-1])
+                for lines in final2:
+                    filename.writerow(lines)
 
 dataParser()
 
