@@ -4,7 +4,7 @@ import csv
 import itertools
 
 
-directory = '\\\\hhs-hlnshare\\shared\\phs\\MTmechv Data\\NFP Exports'
+directory = 
 os.chdir(directory)
 print os.getcwd()
 
