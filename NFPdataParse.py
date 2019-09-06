@@ -4,11 +4,11 @@ import csv
 import itertools
 
 
-directory = 
+directory = '\\\\hhs-hlnshare\\shared\\phs\\MTmechv Data\\NFP Exports'
 os.chdir(directory)
 print os.getcwd()
 
-fileName = 'Home_Visit_Encounter.txt'
+inputFile = 'Home_Visit_Encounter.txt'
 
 column1 = 'CL_EN_GEN_ID'
 value1 = '622699'
@@ -17,8 +17,6 @@ column2 = 'SurveyDate'
 value2 = '2016-05-19'
 
 def dataParser():
-    t = 1
-    files = []
     fullSet = []
     position = []
     final = []
@@ -38,8 +36,8 @@ def dataParser():
             
     dataDict = dict(zip(position,fullSet))
     for i in range(0,len(dataDict.keys())):
-        if any(fileName in val for val in dataDict.values()[i]) == True:
-            changeDir = str(dataDict.keys()[i])+'\\'+fileName
+        if any(inputFile in val for val in dataDict.values()[i]) == True:
+            changeDir = str(dataDict.keys()[i])+'\\'+inputFile
             changeDirList.append(changeDir)
 
     for row in changeDirList:
@@ -66,20 +64,20 @@ def dataParser():
     final2 = list(k for k,_ in itertools.groupby(k))
 
     try:
-        with open('NFPdata_'+fileName+'_'+value1+'_'+value2+'.csv','wb') as data:
+        with open('NFPdata_'+inputFile+'_'+value1+'_'+value2+'.csv','wb') as data:
             filename = csv.writer(data)
             filename.writerow(headers[-1])
             for lines in final2:
                 filename.writerow(lines)
     except NameError:
         try:
-            with open('NFPdata_'+fileName+'_'+value1+'.csv','wb') as data:
+            with open('NFPdata_'+inputFile+'_'+value1+'.csv','wb') as data:
                 filename = csv.writer(data)
                 filename.writerow(headers[-1])
                 for lines in final2:
                     filename.writerow(lines)
         except NameError:
-            with open('NFPdata_All_'+fileName+'.csv','wb') as data:
+            with open('NFPdata_All_'+inputFile+'.csv','wb') as data:
                 filename = csv.writer(data)
                 filename.writerow(headers[-1])
                 for lines in final2:
