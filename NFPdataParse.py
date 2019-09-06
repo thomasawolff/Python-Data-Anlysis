@@ -4,17 +4,17 @@ import csv
 import itertools
 
 
-directory = 
+directory = '\\\\hhs-hlnshare\\shared\\phs\\MTmechv Data\\NFP Exports'
 os.chdir(directory)
 print os.getcwd()
 
 fileName = 'Home_Visit_Encounter.txt'
 
 column1 = 'CL_EN_GEN_ID'
-#value1 = '622699'
+value1 = '622699'
 
 column2 = 'SurveyDate'
-#value2 = '2016-05-19'
+value2 = '2016-05-19'
 
 def dataParser():
     t = 1
@@ -32,20 +32,13 @@ def dataParser():
         folders = os.getcwd()+'\\'+root[2:]
         data = os.listdir(folders)
         filesList = [[] for i in xrange(0)]
-        filesList.append([folders,data])
+        filesList.append(data)
         position.append(folders)
         fullSet.append(filesList)
-
-    for lines in position:
-        if position[0] == fullSet[0][0][0]:
-            dirCheck.append('All Good')
-        else:
-            dirCheck.append(['Do not Match',position[0],fullSet[0][0][0]])
-    #print dirCheck
             
     dataDict = dict(zip(position,fullSet))
     for i in range(0,len(dataDict.keys())):
-        if any(fileName in val for val in dataDict.values()[i][0]) == True:
+        if any(fileName in val for val in dataDict.values()[i]) == True:
             changeDir = str(dataDict.keys()[i])+'\\'+fileName
             changeDirList.append(changeDir)
 
@@ -55,11 +48,8 @@ def dataParser():
             columns = files.next()
             columnList.append(columns)
             cleanCol = map(lambda l: [x.split('\t') for x in l],columnList)
-            filesData = [[] for i in xrange(0)]
-            for line in files:
-                filesData.append(line)
-            for e in range(0,len(filesData)):
-                no_tabs = map(lambda x: x.split('\t'),filesData[e])
+            for e in files:
+                no_tabs = map(lambda x: x.split('\t'),e)
                 newDict = dict(zip(cleanCol[0][0],no_tabs[0]))
                 headers.append(newDict.keys())
                 try:
@@ -76,20 +66,20 @@ def dataParser():
     final2 = list(k for k,_ in itertools.groupby(k))
 
     try:
-        with open('NFPdata_'+value1+'_'+value2+'.csv','wb') as data:
+        with open('NFPdata_'+fileName+'_'+value1+'_'+value2+'.csv','wb') as data:
             filename = csv.writer(data)
             filename.writerow(headers[-1])
             for lines in final2:
                 filename.writerow(lines)
     except NameError:
         try:
-            with open('NFPdata_'+value1+'.csv','wb') as data:
+            with open('NFPdata_'+fileName+'_'+value1+'.csv','wb') as data:
                 filename = csv.writer(data)
                 filename.writerow(headers[-1])
                 for lines in final2:
                     filename.writerow(lines)
         except NameError:
-            with open('NFPdata_All.csv','wb') as data:
+            with open('NFPdata_All_'+fileName+'.csv','wb') as data:
                 filename = csv.writer(data)
                 filename.writerow(headers[-1])
                 for lines in final2:
