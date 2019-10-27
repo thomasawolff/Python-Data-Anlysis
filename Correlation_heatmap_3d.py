@@ -26,8 +26,7 @@ def rowCorrelation():
     ## tuple of the two columns being correlated and their correlation
     ## in the dictionary as key value pairs in 3d data structure.
     ## Ex: {(19, 17): -0.015262993060948592}
-
-    #make histogram stuff - set bins - I choose 20x20 because I have a lot of data
+    
     hist, xedges, yedges = np.histogram2d(xData, yData, bins=(20,20))
     xpos, ypos = np.meshgrid(xedges[:-1]+xedges[1:], yedges[:-1]+yedges[1:])
     zpos = np.array(zData).flatten()
@@ -36,10 +35,9 @@ def rowCorrelation():
     dy = yedges [1] - yedges [0]
     dz = zpos
 
-    cmap = plt.get_cmap('jet') # Get desired colormap - you can change this!
-    max_height = np.max(dz)   # get range of colorbars so we can normalize
+    cmap = plt.get_cmap('jet') 
+    max_height = np.max(dz)  
     min_height = np.min(dz)
-    # scale each z to [0,1], and get their rgb values
     rgba = [cmap((k-min_height)/max_height) for k in dz] 
 
     ax.bar3d(xData, yData, zpos, dx, dy, dz, color=rgba, zsort='average')
