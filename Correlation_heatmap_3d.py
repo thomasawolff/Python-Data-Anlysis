@@ -30,9 +30,6 @@ def rowCorrelation():
     #make histogram stuff - set bins - I choose 20x20 because I have a lot of data
     hist, xedges, yedges = np.histogram2d(xData, yData, bins=(20,20))
     xpos, ypos = np.meshgrid(xedges[:-1]+xedges[1:], yedges[:-1]+yedges[1:])
-
-    xpos = xpos.flatten()
-    ypos = ypos.flatten()
     zpos = np.array(zData).flatten()
 
     dx = xedges [1] - xedges [0]
