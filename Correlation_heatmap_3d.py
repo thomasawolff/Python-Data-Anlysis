@@ -1,20 +1,26 @@
+'''This code uses the dataset that we used in the first week of the course Analytics Methods. 
+We were tasked with finding correlations between columns  on the downloaded dataset'''
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-
+# Reading the csv file into the code using pandas read_csv()
 df = pd.read_csv("Random data v2 (1).csv",header=None)
 
 def rowCorrelation():
+    # initializing list data structures
     xData = []
     yData = []
     zData = []
-
+    
+    # Creating the figure area for the plot
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     # calculates the correlation between all columns and all other columns
+    # I stopped the comparison between the columns at 19. Otherwise the plot
+    # became very crowded
     for i in range(0,19):
         for e in range(0,19):
             dataFlow = dict(zip([(i,e+1)],[np.corrcoef(df[i],df[e+1])[0,1]]))
