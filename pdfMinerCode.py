@@ -29,5 +29,5 @@ def convert_pdf_to_txt(path):
     retstr.close()
     return text
 
-path = '\\\\hhs-hlnshare\\\\shared\\\\phs\MTmechv Data\\\\Silvana and Tom Data\\\\Data in Motion_January 2018.pdf'
+path = ''
 print(convert_pdf_to_txt(path))
